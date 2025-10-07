@@ -3,11 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shalash Photography — DFW Photo</title>
+  <title>Shalash Photography — DFW Media Productoins</title>
   <meta name="description" content="Shalash Photography: Dallas–Fort Worth sports, events, and brand content. Fast, clean, social-ready visuals." />
   <link rel="icon" href="favicon.ico" />
   <link rel="preload" as="image" href="images/hero.jpg">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+  /* --- HOTFIX: keep hero from covering the page --- */
+  .site-header{position:sticky;top:0;z-index:20;}
+  main{position:relative;z-index:0;}
+  html,body{overflow-x:hidden;overflow-y:auto;height:auto;}
+
+  .logo img{height:40px;width:auto;display:block;}
+
+  .hero{
+    position:relative;
+    min-height:65vh;
+    max-height:85vh;       /* don't let it grow endlessly */
+    overflow:hidden;
+  }
+  .hero picture,
+  .hero picture img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;      /* contain the big photo */
+  }
+  .hero-overlay{
+    position:absolute;     /* overlay only inside hero */
+    inset:0;
+    z-index:1;
+    pointer-events:none;   /* so the overlay doesn’t trap scroll */
+  }
+  .hero-overlay .btn{pointer-events:auto;} /* make buttons clickable */
+</style>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <meta property="og:title" content="Shalash Photography — DFW Photo" />
   <meta property="og:description" content="Sports, events, and brand content. 24–72h delivery." />
