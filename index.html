@@ -239,7 +239,28 @@
       </nav>
     </div>
   </footer>
-
   <script src="script.js" defer></script>
+  <script>
+const form = document.querySelector('.contact-form');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const endpoint = form.getAttribute('action');
+    try {
+      const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        form.reset();
+        alert('Thanks! Your message was sent.');
+      } else {
+        alert('Hmm, something went wrong. Try emailing me at shalashphotography@gmail.com.');
+      }
+    } catch {
+      alert('Network error. Please email me at shalashphotography@gmail.com.');
+    }
+  });
+}
+</script>
+
 </body>
 </html>
